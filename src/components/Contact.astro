@@ -1,0 +1,113 @@
+---
+---
+
+<section id="contact" class="mx-auto max-w-6xl px-6 py-24">
+  <div class="grain-card overflow-hidden rounded-3xl border border-line bg-paper">
+    <div class="grid lg:grid-cols-2">
+      <!-- left: pitch -->
+      <div class="border-b border-line p-10 lg:border-b-0 lg:border-r lg:p-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Pojďme se pobavit</p>
+        <h2 class="display mt-3 text-4xl font-semibold leading-tight tracking-tight">
+          Domluvte si nezávaznou konzultaci zdarma, nebo se jen zeptejte na cenu.
+        </h2>
+        <p class="mt-5 text-ink-soft">
+          Bez závazků a bez složitých slov. Napište mi, co potřebujete, a já se ozvu
+          s jasnými možnostmi a poctivou cenou.
+        </p>
+        <ul class="mt-8 space-y-3 text-sm">
+          {["Ozvu se do jednoho pracovního dne", "Pevná cena dopředu, žádná překvapení", "Údržbu vyřeším za vás"].map((t) => (
+            <li class="flex items-center gap-3">
+              <svg class="text-pine-soft" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- right: form (posts nowhere yet — wire up later) -->
+      <form class="p-10 lg:p-12" name="consultation" method="POST" data-netlify="false">
+        <div class="grid gap-5">
+          <label class="block">
+            <span class="text-sm font-semibold">Jméno</span>
+            <input name="name" type="text" required placeholder="Vaše jméno"
+              class="mt-1.5 w-full rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink placeholder:text-ink-soft/70 outline-none transition-colors focus:border-pine" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-semibold">E-mail</span>
+            <input name="email" type="email" required placeholder="vy@priklad.cz"
+              class="mt-1.5 w-full rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink placeholder:text-ink-soft/70 outline-none transition-colors focus:border-pine" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-semibold">Telefon <span class="font-normal text-ink-soft">(nepovinné)</span></span>
+            <input name="phone" type="tel" placeholder="+420 777 123 456"
+              class="mt-1.5 w-full rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink placeholder:text-ink-soft/70 outline-none transition-colors focus:border-pine" />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-semibold">Co potřebujete?</span>
+            <select name="interest"
+              class="mt-1.5 w-full rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-pine">
+              <option>Jednoduché stránky</option>
+              <option>Kompletní balíček</option>
+              <option>Katalog produktů</option>
+              <option>Hosting / provoz a údržba</option>
+              <option>Zatím nevím, poradíte mi</option>
+            </select>
+          </label>
+
+          <fieldset class="block">
+            <span class="text-sm font-semibold">Máte už něco z toho?</span>
+            <div class="mt-2 flex flex-col gap-2 text-sm text-ink sm:flex-row sm:gap-6">
+              <label class="flex items-center gap-2.5">
+                <input name="has_website" type="checkbox" value="ano"
+                  class="h-4 w-4 rounded border-line text-pine accent-pine" />
+                Už mám webové stránky
+              </label>
+              <label class="flex items-center gap-2.5">
+                <input name="has_domain" type="checkbox" value="ano"
+                  class="h-4 w-4 rounded border-line text-pine accent-pine" />
+                Už mám vlastní adresu (doménu)
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="block">
+            <span class="text-sm font-semibold">Jak vás mám nejradši kontaktovat?</span>
+            <div class="mt-2 flex gap-6 text-sm text-ink">
+              <label class="flex items-center gap-2.5">
+                <input name="contact_method" type="radio" value="telefon" checked
+                  class="h-4 w-4 border-line text-pine accent-pine" />
+                Telefonicky
+              </label>
+              <label class="flex items-center gap-2.5">
+                <input name="contact_method" type="radio" value="email"
+                  class="h-4 w-4 border-line text-pine accent-pine" />
+                E-mailem
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="block">
+            <span class="text-sm font-semibold">Krátká zpráva</span>
+            <textarea name="message" rows="3" placeholder="Pár vět o tom, co byste potřebovali…"
+              class="mt-1.5 w-full resize-none rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink placeholder:text-ink-soft/70 outline-none transition-colors focus:border-pine"></textarea>
+          </label>
+
+          <button type="submit"
+            class="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-pine">
+            Odeslat poptávku
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <p class="text-center text-sm text-ink-soft">
+            Radši e-mail?
+            <a href="mailto:jacobworkgreen@gmail.com" class="font-semibold text-ink underline decoration-pine decoration-2 underline-offset-2 hover:text-pine">jacobworkgreen@gmail.com</a>
+          </p>
+          <p class="text-center text-xs text-ink-soft">Žádný spam. Vaše údaje použiju jen k tomu, abych vám odpověděl.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

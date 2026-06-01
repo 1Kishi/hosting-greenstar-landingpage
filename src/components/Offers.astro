@@ -1,0 +1,96 @@
+---
+const offers = [
+  {
+    n: "01",
+    name: "Jednoduché stránky",
+    tagline: "Vaše vizitka na internetu.",
+    desc: "Přehledné stránky, kde lidé hned uvidí, kdo jste, co děláte a jak vás kontaktovat. Postarám se i o vlastní internetovou adresu a o to, aby stránky byly stále dostupné.",
+    points: [
+      "Až přibližně 5 stránek (např. Úvod, O nás, Ceník, Kontakt)",
+      "Vypadají dobře i na mobilu a tabletu",
+      "Kontaktní formulář a mapa, jak vás najít",
+      "Vlastní adresa typu vasefirma.cz a její provoz",
+    ],
+    featured: false,
+  },
+  {
+    n: "02",
+    name: "Kompletní balíček",
+    tagline: "Vše, abyste působili profesionálně.",
+    desc: "Stránky plus vše, co k nim patří: e-mailová adresa na vaší doméně, propojení se sociálními sítěmi a nastavení tak, aby vás lidé snáz našli na Googlu. O vše se průběžně starám.",
+    points: [
+      "Větší web s více stránkami",
+      "Profesionální e-mail (např. jmeno@vasefirma.cz)",
+      "Aby vás lidé našli na Googlu, když hledají vaši službu",
+      "Profil na Googlu a propojení s Facebookem či Instagramem",
+      "Pravidelná údržba — řeším to za vás",
+    ],
+    featured: true,
+  },
+  {
+    n: "03",
+    name: "Katalog produktů",
+    tagline: "Ukažte, co prodáváte.",
+    desc: "Přehledná nabídka vašich výrobků nebo služeb s fotkami, popisem a cenami. Zákazník si může nezávazně poptat zboží nebo poslat objednávku.",
+    points: [
+      "Přehledné dlaždice s vašimi produkty",
+      "Rozdělení do kategorií a vyhledávání",
+      "Možnost poptávky nebo objednávky",
+      "Snadno si vše upravíte sami",
+    ],
+    featured: false,
+  },
+];
+---
+
+<section id="offers" class="border-t border-line bg-paper-deep/50">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Co můžete získat</p>
+        <h2 class="display mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Tři způsoby, jak se dostat na internet</h2>
+      </div>
+      <p class="max-w-sm text-ink-soft">Nevíte, co si vybrat? Vyberte to, co je nejblíž vašemu cíli - zbytek doladíme společně po telefonu.</p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {offers.map((o) => (
+        <article
+          class:list={[
+            "grain-card group relative flex flex-col rounded-2xl border p-7 transition-transform hover:-translate-y-1",
+            o.featured ? "border-ink bg-ink text-paper" : "border-line bg-paper",
+          ]}
+        >
+          {o.featured && (
+            <span class="absolute -top-3 right-6 rounded-full bg-amber px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
+              Nejoblíbenější
+            </span>
+          )}
+          <span class:list={["display text-sm font-semibold", o.featured ? "text-amber" : "text-ink-soft"]}>{o.n}</span>
+          <h3 class="display mt-2 text-2xl font-semibold">{o.name}</h3>
+          <p class:list={["mt-1 text-sm font-medium", o.featured ? "text-paper/70" : "text-pine"]}>{o.tagline}</p>
+          <p class:list={["mt-4 text-sm leading-relaxed", o.featured ? "text-paper/80" : "text-ink-soft"]}>{o.desc}</p>
+
+          <ul class="mt-6 space-y-2.5 text-sm">
+            {o.points.map((p) => (
+              <li class="flex items-start gap-2.5">
+                <svg class:list={["mt-0.5 shrink-0", o.featured ? "text-amber" : "text-pine-soft"]} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <span class:list={[o.featured ? "text-paper/90" : "text-ink"]}>{p}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#contact"
+            class:list={[
+              "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
+              o.featured ? "bg-amber text-ink hover:bg-amber/90" : "bg-ink text-paper hover:bg-pine",
+            ]}
+          >
+            Zeptat se na cenu
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

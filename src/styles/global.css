@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* ---- Fonts: Fraunces (display serif) + Space Grotesk avoided; using Geist-like Hanken Grotesk via Google ---- */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap");
+
+@theme {
+  --color-paper: #f6f1e7;
+  --color-paper-deep: #ece6d6;
+  --color-ink: #18211c;
+  --color-ink-soft: #4f5751;
+  --color-pine: #1f7a4d;
+  --color-pine-deep: #155c39;
+  --color-pine-soft: #2f5d50;
+  --color-amber: #d98a2b;
+  --color-line: #d8d0bd;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+  body {
+    /* subtle paper grain */
+    background-image: radial-gradient(
+        circle at 1px 1px,
+        rgba(28, 26, 23, 0.04) 1px,
+        transparent 0
+      );
+    background-size: 22px 22px;
+  }
+  ::selection {
+    background: var(--color-pine);
+    color: var(--color-paper);
+  }
+}
+
+@layer utilities {
+  .display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: reveal 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  @keyframes reveal {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .grain-card {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 18px 40px -24px rgba(28, 26, 23, 0.4);
+  }
+}

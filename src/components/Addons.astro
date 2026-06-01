@@ -1,0 +1,38 @@
+---
+const addons = [
+  { name: "Provoz Discord bota", desc: "Pomocník pro váš Discord (chatovací aplikace pro skupiny), který běží nepřetržitě.", tag: "Komunita" },
+  { name: "Server pro Minecraft", desc: "Vlastní herní svět pro vás a vaše přátele - včetně záloh a stálého provozu.", tag: "Hraní" },
+  { name: "Server pro TeamSpeak", desc: "Místo pro skupinové hovory s nízkým zpožděním.", tag: "Hlas" },
+];
+---
+
+<section id="addons" class="border-y border-line bg-ink text-paper">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Doplněk</p>
+        <h2 class="display mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+          Postarám se i o servery pro vaši komunitu.
+        </h2>
+        <p class="mt-5 max-w-md text-paper/70">
+          Kromě webových stránek umím zprovoznit a spravovat i servery, na kterých
+          běží vaše skupina - vy se tak můžete věnovat lidem, ne nastavování.
+        </p>
+        <a href="#contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-pine px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-pine-deep">
+          Chci se domluvit
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        {addons.map((a) => (
+          <div class="flex flex-col rounded-xl border border-paper/15 bg-paper/[0.04] p-6 transition-colors hover:border-pine/60">
+            <span class="self-start rounded-full bg-paper/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-paper/60">{a.tag}</span>
+            <h3 class="display mt-5 text-xl font-semibold">{a.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-paper/65">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

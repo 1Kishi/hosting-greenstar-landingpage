@@ -1,0 +1,99 @@
+---
+const links = [
+  { href: "#offers", label: "Co nabízím" },
+  { href: "#who", label: "Pro koho to je" },
+  { href: "#addons", label: "Doplňky" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-line/70 bg-paper/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4">
+    <a href="#top" class="flex shrink-0 items-center gap-2">
+      <span class="grid h-8 w-8 place-items-center rounded-md bg-pine text-paper">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l2.6 6.9L22 9.3l-5.4 4.6L18.3 22 12 17.8 5.7 22l1.7-8.1L2 9.3l7.4-.4z"/></svg>
+      </span>
+      <span class="display text-lg font-semibold tracking-tight sm:text-xl">GreenStar Hosting</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 text-sm font-medium text-ink-soft md:flex">
+      {links.map((l) => (
+        <a href={l.href} class="transition-colors hover:text-ink">{l.label}</a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a
+      href="#contact"
+      class="hidden shrink-0 rounded-full bg-pine px-5 py-2 text-sm font-semibold text-paper shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-pine-deep md:inline-flex"
+    >
+      Nezávazná konzultace zdarma
+    </a>
+
+    <!-- Mobile hamburger toggle -->
+    <button
+      id="nav-toggle"
+      type="button"
+      aria-label="Otevřít menu"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      class="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-line text-ink transition-colors hover:bg-paper-deep md:hidden"
+    >
+      <svg id="nav-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="nav-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <nav
+    id="mobile-nav"
+    class="hidden border-t border-line/70 bg-paper/95 backdrop-blur-md md:hidden"
+  >
+    <div class="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="mobile-nav-link rounded-md px-3 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
+        >
+          {l.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="mobile-nav-link mt-2 rounded-full bg-pine px-5 py-3 text-center text-sm font-semibold text-paper shadow-sm transition-colors hover:bg-pine-deep"
+      >
+        Nezávazná konzultace zdarma
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const panel = document.getElementById("mobile-nav");
+  const iconOpen = document.getElementById("nav-icon-open");
+  const iconClose = document.getElementById("nav-icon-close");
+
+  function setOpen(open) {
+    if (!toggle || !panel || !iconOpen || !iconClose) return;
+    panel.classList.toggle("hidden", !open);
+    iconOpen.classList.toggle("hidden", open);
+    iconClose.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setOpen(!isOpen);
+  });
+
+  // Close after tapping a link
+  panel?.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  // Close when resizing up to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) setOpen(false);
+  });
+</script>

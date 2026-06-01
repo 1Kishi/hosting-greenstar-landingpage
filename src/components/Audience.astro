@@ -1,0 +1,28 @@
+---
+const audience = [
+  { icon: "M3 21V8l9-5 9 5v13M9 21v-6h6v6", label: "Malé firmy", note: "Abyste působili důvěryhodně a lidé vás našli." },
+  { icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 21v-2a4 4 0 0 0-3-3.87", label: "Živnostníci", note: "Ukázka vaší práce, která získá zákazníky." },
+  { icon: "M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z", label: "Tvůrci", note: "Jedno místo pro všechny vaše odkazy." },
+  { icon: "M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z M12 7v3l2 1", label: "Místní služby", note: "Otevírací doba, objednání a kontakt." },
+  { icon: "M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M11 7a4 4 0 1 0 0 .01M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", label: "Spolky a komunity", note: "Stránky i servery pro vaši skupinu." },
+];
+---
+
+<section id="who" class="mx-auto max-w-6xl px-6 py-24">
+  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Pro koho to je</p>
+  <h2 class="display mt-3 max-w-2xl text-4xl font-semibold tracking-tight md:text-5xl">
+    Pokud se s technikou nechcete trápit, jste tu správně.
+  </h2>
+
+  <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+    {audience.map((a) => (
+      <div class="rounded-xl border border-line bg-paper p-6 transition-colors hover:border-ink">
+        <span class="grid h-11 w-11 place-items-center rounded-lg bg-pine-soft/10 text-pine-soft">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={a.icon}/></svg>
+        </span>
+        <h3 class="mt-4 font-semibold">{a.label}</h3>
+        <p class="mt-1 text-sm text-ink-soft">{a.note}</p>
+      </div>
+    ))}
+  </div>
+</section>
