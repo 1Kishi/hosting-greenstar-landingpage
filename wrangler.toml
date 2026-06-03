@@ -2,6 +2,7 @@ name = "hosting-greenstar-landingpage"
 compatibility_date = "2026-06-03"
 pages_build_output_dir = "dist"
 
+
 # Cloudflare Pages serves the static Astro build (dist/) and the functions/ directory
 # as Pages Functions. The contact form posts to /api/contact -> functions/api/contact.ts
 
