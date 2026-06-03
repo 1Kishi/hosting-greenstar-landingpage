@@ -1,0 +1,36 @@
+---
+const reasons = [
+  { title: "Osobní přístup", desc: "Komunikujete přímo se mnou, ne s call centrem, ne s chatem a umělou inteligencí, ani s pěti lidmi v kopii." },
+  { title: "Jasná cena předem", desc: "Víte dopředu, co platíte a za co. Žádná překvapení na faktuře." },
+  { title: "Web připravený pro mobil", desc: "Vypadá dobře na telefonu, tabletu i počítači - tam, kde vás lidé hledají." },
+  { title: "Vše na jednom místě", desc: "Doména, hosting i zálohy pohromadě, s e-mailem pomůžu podle potřeby." },
+  { title: "Bez technického žargonu", desc: "Mluvím lidsky. Nemusíte rozumět DNS, SSL ani serverům." },
+  { title: "Dělané pro malé podniky", desc: "Vhodné pro živnostníky, malé firmy a lokální služby - ne jen pro korporace." },
+];
+---
+
+<section id="proc" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Proč GreenStar</p>
+        <h2 class="display mt-3 max-w-[22ch] text-4xl font-semibold tracking-tight md:text-5xl reveal">
+          Postavím to, pohlídám to a&nbsp;když je potřeba, opravím to.
+        </h2>
+      </div>
+      <span class="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft reveal">(05) — Proč já</span>
+    </div>
+
+    <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      {reasons.map((r) => (
+        <div class="flex flex-col bg-paper p-6 transition-colors hover:bg-paper-deep/60 reveal">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-mint text-pine-deep">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <h3 class="display mt-4 text-lg font-semibold">{r.title}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{r.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

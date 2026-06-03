@@ -1,0 +1,46 @@
+---
+const care = [
+  { log: "BACKUP READY", text: "Pravidelné zálohy webu - když se něco pokazí, je z čeho obnovit." },
+  { log: "MONITORING ACTIVE", text: "Kontrola dostupnosti, abyste o výpadku věděli dřív než vaši zákazníci." },
+  { log: "CONTENT UPDATED", text: "Drobné úpravy textů a fotek, když se vám něco změní." },
+  { log: "SUPPORT ONLINE", text: "Technická pomoc bez agenturního čekání - píšete přímo mně." },
+  { log: "ALL IN ONE PLACE", text: "Doména, hosting a zálohy na jednom místě, ne roztroušené po internetu." },
+  { log: "YOU KNOW WHO TO CALL", text: "Když se něco rozbije, víte komu napsat - a že to vyřeším." },
+];
+---
+
+<section id="pece" class="border-t border-line bg-ink text-paper">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:items-start">
+      <div>
+        <p class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-pine-soft reveal">
+          <span class="status-dot"></span> Po spuštění
+        </p>
+        <h2 class="display mt-4 text-4xl font-semibold leading-[1.05] md:text-5xl reveal">
+          Po spuštění vás<br /><em class="not-italic text-pine-soft">v tom nenechám.</em>
+        </h2>
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-paper/75 reveal">
+          Spousta lidí umí udělat web. Můj silnější slib je jiný:
+          <span class="text-paper">udělám vám web a&nbsp;potom se o&nbsp;něj starám.</span>
+          To je přesně to, co malá firma, kadeřnice, trenér nebo kavárna ocení.
+        </p>
+        <a href="#cenik" class="mt-8 inline-flex items-center gap-2 rounded-full bg-pine px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-pine-deep reveal">
+          Jak vypadá měsíční péče
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {care.map((c) => (
+          <div class="rounded-xl border border-paper/12 bg-paper/[0.04] p-5 transition-colors hover:border-pine/60 reveal">
+            <div class="flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.12em] text-pine-soft">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              {c.log}
+            </div>
+            <p class="mt-2.5 text-sm leading-relaxed text-paper/85">{c.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

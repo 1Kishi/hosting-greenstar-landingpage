@@ -4,12 +4,13 @@ const offers = [
     n: "01",
     name: "Jednoduché stránky",
     tagline: "Vaše vizitka na internetu.",
-    desc: "Přehledné stránky, kde lidé hned uvidí, kdo jste, co děláte a jak vás kontaktovat. Postarám se i o vlastní internetovou adresu a o to, aby stránky byly stále dostupné.",
+    desc: "Přehledná landing page nebo menší web, kde lidé hned uvidí, kdo jste, co děláte a jak vás kontaktovat. Ideální pro živnostníky, menší služby nebo první profesionální prezentaci.",
+    price: "od 14 900 Kč",
     points: [
-      "Až přibližně 5 stránek (např. Úvod, O nás, Ceník, Kontakt)",
-      "Vypadají dobře i na mobilu a tabletu",
+      "Landing page nebo jednoduchý web",
+      "Vypadá dobře na mobilu, tabletu i počítači",
       "Kontaktní formulář a mapa, jak vás najít",
-      "Vlastní adresa typu vasefirma.cz a její provoz",
+      "Základní nastavení domény a spuštění webu",
     ],
     featured: false,
   },
@@ -17,80 +18,89 @@ const offers = [
     n: "02",
     name: "Kompletní balíček",
     tagline: "Vše, abyste působili profesionálně.",
-    desc: "Stránky plus vše, co k nim patří: e-mailová adresa na vaší doméně, propojení se sociálními sítěmi a nastavení tak, aby vás lidé snáz našli na Googlu. O vše se průběžně starám.",
+    desc: "Vícestránkový web pro firmy a živnostníky, kteří chtějí působit důvěryhodně, ukázat své služby, ceny, práci a usnadnit zákazníkům kontakt.",
+    price: "od 26 900 Kč",
     points: [
-      "Větší web s více stránkami",
-      "Profesionální e-mail (např. jmeno@vasefirma.cz)",
-      "Aby vás lidé našli na Googlu, když hledají vaši službu",
-      "Profil na Googlu a propojení s Facebookem či Instagramem",
-      "Pravidelná údržba — řeším to za vás",
+      "Více stránek podle potřeb podnikání",
+      "Struktura webu navržená tak, aby se zákazník rychle zorientoval",
+      "Základní příprava pro vyhledávání na Googlu",
+      "Napojení na kontaktní formulář, mapu a sociální sítě",
+      "Možnost navázat hostingem, zálohami a technickou péčí",
     ],
     featured: true,
   },
   {
     n: "03",
-    name: "Katalog produktů",
-    tagline: "Ukažte, co prodáváte.",
-    desc: "Přehledná nabídka vašich výrobků nebo služeb s fotkami, popisem a cenami. Zákazník si může nezávazně poptat zboží nebo poslat objednávku.",
+    name: "Katalog / složitější web",
+    tagline: "Ukažte nabídku přehledně a profesionálně.",
+    desc: "Web pro rozsáhlejší nabídku služeb, produktů, katalog, poptávky, objednávky nebo náročnější funkce. Vhodné pro projekty, kde obyčejná prezentace nestačí.",
+    price: "od 39 900 Kč",
     points: [
-      "Přehledné dlaždice s vašimi produkty",
-      "Rozdělení do kategorií a vyhledávání",
-      "Možnost poptávky nebo objednávky",
-      "Snadno si vše upravíte sami",
+      "Přehledné zobrazení produktů nebo služeb",
+      "Kategorie, filtrování nebo vyhledávání podle potřeby",
+      "Možnost poptávky, objednávky nebo vlastního formuláře",
+      "Řešení navržené podle náročnosti projektu",
+      "U složitějších webů individuální nacenění provozu a péče",
     ],
     featured: false,
   },
 ];
 ---
 
-<section id="offers" class="border-t border-line bg-paper-deep/50">
-  <div class="mx-auto max-w-6xl px-6 py-24">
+<section id="balicky" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Co můžete získat</p>
-        <h2 class="display mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Tři způsoby, jak se dostat na internet</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Co můžete získat</p>
+        <h2 class="display mt-3 text-4xl font-semibold tracking-tight md:text-5xl reveal">Tři způsoby, jak se dostat na internet</h2>
       </div>
-      <p class="max-w-sm text-ink-soft">Nevíte, co si vybrat? Vyberte to, co je nejblíž vašemu cíli - zbytek doladíme společně po telefonu.</p>
+      <p class="max-w-sm text-ink-soft reveal">Ceny jsou orientační „od“ — přesnou částku řeknu dopředu podle toho, co web potřebuje. Žádná překvapení.</p>
     </div>
 
-    <div class="mt-14 grid gap-6 md:grid-cols-3">
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
       {offers.map((o) => (
-        <article
-          class:list={[
-            "grain-card group relative flex flex-col rounded-2xl border p-7 transition-transform hover:-translate-y-1",
-            o.featured ? "border-ink bg-ink text-paper" : "border-line bg-paper",
-          ]}
-        >
+        <article class:list={[
+          "grain-card group relative flex flex-col rounded-2xl border p-7 transition-transform hover:-translate-y-1 reveal",
+          o.featured ? "border-ink bg-ink text-paper" : "border-line bg-paper",
+        ]}>
           {o.featured && (
             <span class="absolute -top-3 right-6 rounded-full bg-amber px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
               Nejoblíbenější
             </span>
           )}
-          <span class:list={["display text-sm font-semibold", o.featured ? "text-amber" : "text-ink-soft"]}>{o.n}</span>
+          <span class:list={["display text-sm font-semibold", o.featured ? "text-amber" : "text-pine"]}>{o.n}</span>
           <h3 class="display mt-2 text-2xl font-semibold">{o.name}</h3>
           <p class:list={["mt-1 text-sm font-medium", o.featured ? "text-paper/70" : "text-pine"]}>{o.tagline}</p>
           <p class:list={["mt-4 text-sm leading-relaxed", o.featured ? "text-paper/80" : "text-ink-soft"]}>{o.desc}</p>
 
-          <ul class="mt-6 space-y-2.5 text-sm">
+          <div class:list={["mt-5 border-t pt-4", o.featured ? "border-paper/15" : "border-line"]}>
+            <span class="display text-2xl font-semibold">{o.price}</span>
+            <span class:list={["ml-1.5 text-xs", o.featured ? "text-paper/60" : "text-ink-soft"]}>jednorázově</span>
+          </div>
+
+          <ul class="mt-5 space-y-2.5 text-sm">
             {o.points.map((p) => (
               <li class="flex items-start gap-2.5">
-                <svg class:list={["mt-0.5 shrink-0", o.featured ? "text-amber" : "text-pine-soft"]} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <svg class:list={["mt-0.5 shrink-0", o.featured ? "text-amber" : "text-pine"]} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
                 <span class:list={[o.featured ? "text-paper/90" : "text-ink"]}>{p}</span>
               </li>
             ))}
           </ul>
 
-          <a
-            href="#contact"
-            class:list={[
-              "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
-              o.featured ? "bg-amber text-ink hover:bg-amber/90" : "bg-ink text-paper hover:bg-pine",
-            ]}
-          >
-            Zeptat se na cenu
+          <a href="#contact" class:list={[
+            "mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
+            o.featured ? "bg-amber text-ink hover:bg-amber/90" : "bg-ink text-paper hover:bg-pine",
+          ]}>
+            Mám zájem
           </a>
         </article>
       ))}
     </div>
+
+    <p class="mt-8 max-w-3xl text-sm leading-relaxed text-ink-soft reveal">
+      Na web pak můžete navázat měsíční péčí (hosting, zálohy, monitoring a drobné úpravy) —
+      <a href="#cenik" class="font-semibold text-ink underline decoration-pine decoration-2 underline-offset-2 hover:text-pine">podívejte se na ceník péče</a>.
+      S nastavením firemního e-mailu pomůžu podle potřeby.
+    </p>
   </div>
 </section>

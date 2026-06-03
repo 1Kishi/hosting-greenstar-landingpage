@@ -1,0 +1,197 @@
+---
+const tiers = [
+  {
+    name: "Základní péče",
+    price: "990 Kč",
+    period: "/ měsíc",
+    for: "Pro landing page a malé statické weby.",
+    points: [
+      "Hosting webu",
+      "SSL certifikát (zabezpečené připojení)",
+      "Správa DNS / Cloudflare",
+      "Pravidelné zálohy",
+      "Hlídání dostupnosti (monitoring)",
+      "Základní technická podpora",
+    ],
+    featured: false,
+  },
+  {
+    name: "Standardní péče",
+    price: "1 790 Kč",
+    period: "/ měsíc",
+    for: "Pro běžné weby malých firem.",
+    points: [
+      "Vše ze Základní péče",
+      "Technická údržba a kontroly",
+      "Opravy drobných chyb provozu",
+      "Bezpečnostní kontroly nastavení",
+      "Drobné úpravy do 30 minut měsíčně",
+    ],
+    featured: true,
+  },
+  {
+    name: "Rozšířená péče",
+    price: "2 500 Kč",
+    period: "/ měsíc",
+    for: "Pro větší weby a klienty, kteří chtějí měnit a podporovat víc.",
+    points: [
+      "Vše ze Standardní péče",
+      "Přednostní podpora",
+      "Více času na úpravy každý měsíc",
+      "Pravidelnější kontroly a péče",
+    ],
+    featured: false,
+  },
+  {
+    name: "Individuální provoz",
+    price: "od 5 000 Kč",
+    period: "/ měsíc",
+    for: "Pro katalogy, aplikace, databáze, integrace a weby s vyšší návštěvností.",
+    points: [
+      "Provoz na míru podle projektu",
+      "Vyšší výkon a kapacita",
+      "Vlastní integrace a databáze",
+      "Domluvíme přesný rozsah",
+    ],
+    featured: false,
+  },
+];
+
+const notIncluded = [
+  "Kompletní redesign webu",
+  "Nové stránky nad rámec drobných úprav",
+  "Nové funkce a rozsáhlé sekce textů",
+  "SEO kampaně a placená reklama",
+  "Licence Google Workspace / Microsoft 365",
+  "Obnova domény (pokud není výslovně součástí)",
+];
+---
+
+<section id="cenik" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Ceník měsíční péče</p>
+        <h2 class="display mt-3 max-w-[20ch] text-4xl font-semibold tracking-tight md:text-5xl reveal">
+          Platíte za klid, ne za místo na serveru.
+        </h2>
+      </div>
+      <span class="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft reveal">(03) - Ceník a péče</span>
+    </div>
+
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft reveal">
+      Měsíční péče je hlavní část toho, co dělám. Web vám neudělám a&nbsp;nezmizím —
+      hostuju ho, zálohuju, hlídám a&nbsp;drobnosti měním za&nbsp;vás. Cena je jasná dopředu.
+    </p>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      {tiers.map((t) => (
+        <article class:list={[
+          "grain-card relative flex flex-col rounded-2xl border p-6 transition-transform hover:-translate-y-1 reveal",
+          t.featured ? "border-ink bg-ink text-paper" : "border-line bg-paper",
+        ]}>
+          {t.featured && (
+            <span class="absolute -top-3 left-6 rounded-full bg-amber px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-ink">
+              Nejčastější volba
+            </span>
+          )}
+          <h3 class="display text-xl font-semibold">{t.name}</h3>
+          <div class="mt-3 flex items-baseline gap-1.5">
+            <span class="display text-3xl font-semibold">{t.price}</span>
+            <span class:list={["text-sm", t.featured ? "text-paper/60" : "text-ink-soft"]}>{t.period}</span>
+          </div>
+          <p class:list={["mt-2 text-sm leading-relaxed", t.featured ? "text-paper/75" : "text-ink-soft"]}>{t.for}</p>
+
+          <ul class="mt-5 space-y-2.5 text-sm">
+            {t.points.map((p) => (
+              <li class="flex items-start gap-2.5">
+                <svg class:list={["mt-0.5 shrink-0", t.featured ? "text-amber" : "text-pine"]} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                <span class:list={[t.featured ? "text-paper/90" : "text-ink"]}>{p}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href="#contact" class:list={[
+            "mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors",
+            t.featured ? "bg-amber text-ink hover:bg-amber/90" : "bg-ink text-paper hover:bg-pine",
+          ]}>
+            Mám zájem
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- transparency promise: no grey pricing tricks -->
+    <div class="mt-8 overflow-hidden rounded-2xl border border-line reveal">
+      <div class="border-b border-line bg-paper-deep/50 p-6 sm:p-8">
+        <p class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-pine">
+          <span class="status-dot"></span> Bez triků s cenou
+        </p>
+        <h3 class="display mt-3 max-w-[28ch] text-2xl font-semibold md:text-3xl">
+          Žádná „sleva 70 % na první rok“ a šok z faktury napřesrok.
+        </h3>
+        <p class="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
+          Spousta webů a hostingů láká na první rok s neuvěřitelnou slevou, a další rok
+          vám přijde faktura v plné výši - a vy zíráte, kolik najednou platíte.
+          U mě nic takového nehrozí. Cenu znáte dopředu, platí i příští roky a&nbsp;o web
+          se starám: hostuju ho, zálohuju, zabezpečuju a&nbsp;hlídám.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2">
+        <div class="border-b border-line p-6 sm:border-b-0 sm:border-r sm:p-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">Jak to bývá jinde</p>
+          <ul class="mt-4 space-y-3 text-sm">
+            {[
+              "První rok extra sleva, pak skokové zdražení",
+              "Cenu se pořádně dozvíte až u faktury",
+              "Za každou maličkost příplatek navíc",
+              "Když něco přestane fungovat, nikdo to nezvedá",
+            ].map((t) => (
+              <li class="flex items-start gap-2.5 text-ink-soft">
+                <svg class="mt-0.5 shrink-0 text-amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-mint/40 p-6 sm:p-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-pine-deep">Jak to dělám já</p>
+          <ul class="mt-4 space-y-3 text-sm">
+            {[
+              "Cena jasná dopředu - a platí i další roky",
+              "Žádné skryté poplatky ani skokové zdražení",
+              "Drobné úpravy v rámci domluvené péče",
+              "Web hlídám, zálohuju a zabezpečuju",
+              "Když se něco stane, víte komu napsat",
+            ].map((t) => (
+              <li class="flex items-start gap-2.5 text-ink">
+                <svg class="mt-0.5 shrink-0 text-pine" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- transparency: what monthly care does NOT include -->
+    <div class="mt-8 grid gap-6 rounded-2xl border border-line bg-paper-deep/50 p-6 sm:p-8 md:grid-cols-[1fr_1.3fr] reveal">
+      <div>
+        <h3 class="display text-xl font-semibold">Co měsíční péče neobsahuje</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          Aby bylo vše férové a&nbsp;bez překvapení: drobné úpravy jsou v&nbsp;rámci
+          domluveného času (např. do&nbsp;30&nbsp;minut měsíčně). Větší věci rád udělám —
+          jen je naceníme zvlášť.
+        </p>
+      </div>
+      <ul class="grid gap-2.5 text-sm sm:grid-cols-2">
+        {notIncluded.map((n) => (
+          <li class="flex items-start gap-2.5 text-ink-soft">
+            <svg class="mt-0.5 shrink-0 text-amber" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            {n}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

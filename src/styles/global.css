@@ -1,18 +1,29 @@
 @import "tailwindcss";
 
-/* ---- Fonts: Fraunces (display serif) + Space Grotesk avoided; using Geist-like Hanken Grotesk via Google ---- */
+/* ---- Fonts: Fraunces (warm display serif) + Hanken Grotesk (calm body) ---- */
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap");
 
 @theme {
-  --color-paper: #f6f1e7;
-  --color-paper-deep: #ece6d6;
-  --color-ink: #18211c;
-  --color-ink-soft: #4f5751;
-  --color-pine: #1f7a4d;
-  --color-pine-deep: #155c39;
-  --color-pine-soft: #2f5d50;
-  --color-amber: #d98a2b;
-  --color-line: #d8d0bd;
+  /* warm paper background, soft + pastel */
+  --color-paper: #f7f3ea;
+  --color-paper-deep: #efe9da;
+  --color-paper-warm: #f3ead9;
+
+  /* deep ink, almost black-green */
+  --color-ink: #1b2620;
+  --color-ink-soft: #565f57;
+
+  /* pine greens */
+  --color-pine: #2c7a52;
+  --color-pine-deep: #1e5c3c;
+  --color-pine-soft: #7aa98f;
+  --color-mint: #e4efe6;
+
+  /* muted amber highlight */
+  --color-amber: #d59a4e;
+  --color-amber-soft: #f0e1c6;
+
+  --color-line: #ddd5c3;
 
   --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Hanken Grotesk", system-ui, sans-serif;
@@ -30,7 +41,7 @@
     /* subtle paper grain */
     background-image: radial-gradient(
         circle at 1px 1px,
-        rgba(28, 26, 23, 0.04) 1px,
+        rgba(28, 26, 23, 0.035) 1px,
         transparent 0
       );
     background-size: 22px 22px;
@@ -38,6 +49,17 @@
   ::selection {
     background: var(--color-pine);
     color: var(--color-paper);
+  }
+  /* visible, accessible focus on every interactive element */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-pine);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
@@ -60,5 +82,48 @@
   .grain-card {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
       0 18px 40px -24px rgba(28, 26, 23, 0.4);
+  }
+  /* small living "status" pulse used across the care-system motif */
+  .status-dot {
+    position: relative;
+    display: inline-block;
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-pine);
+  }
+  .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-pine);
+    opacity: 0.5;
+    animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

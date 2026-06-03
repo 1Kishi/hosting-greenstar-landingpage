@@ -1,0 +1,66 @@
+---
+const benefits = [
+  {
+    icon: "M13 2 3 14h7l-1 8 10-12h-7l1-8z",
+    title: "Rychlé načítání",
+    desc: "Stránky se zobrazují z místa blízko návštěvníkovi, takže naběhnou rychle odkudkoli.",
+  },
+  {
+    icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+    title: "Zabezpečené připojení (SSL)",
+    desc: "Šifrované spojení a ochrana proti útokům jsou samozřejmostí, ne příplatek.",
+  },
+  {
+    icon: "M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 7v5l3 2",
+    title: "Hlídání dostupnosti",
+    desc: "Monitoring sleduje, jestli web běží - o případném výpadku vím dřív než vy.",
+  },
+  {
+    icon: "M21 8v13H3V8M1 3h22v5H1zM10 12h4",
+    title: "Pravidelné zálohy",
+    desc: "Web zálohuju, takže je vždy z čeho obnovit, kdyby se cokoli pokazilo.",
+  },
+  {
+    icon: "M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z",
+    title: "Data v EU",
+    desc: "Provoz běží v evropských datových centrech - blízko k vám a podle pravidel EU.",
+  },
+  {
+    icon: "M14.7 6.3a4 4 0 0 0-5.6 0L4 11.4a4 4 0 0 0 5.6 5.6l1-1M9.3 17.7a4 4 0 0 0 5.6 0l5.1-5.1a4 4 0 0 0-5.6-5.6l-1 1",
+    title: "Vše na jednom místě",
+    desc: "Zařídím vlastní adresu, hosting i zálohy a pomůžu s nastavením firemního e-mailu podle potřeby.",
+  },
+];
+---
+
+<section id="provoz" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+      <div>
+        <p class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-pine reveal">
+          <span class="status-dot"></span> Hosting, zálohy a technická péče
+        </p>
+        <h2 class="display mt-4 text-4xl font-semibold md:text-5xl reveal">
+          Rychlý a bezpečný provoz <em class="not-italic text-pine">bez starostí</em>.
+        </h2>
+        <p class="mt-5 max-w-md text-lg leading-relaxed text-ink-soft reveal">
+          Nemusíte vědět, kde a jak web běží. Důležité je, že se načítá rychle,
+          je v bezpečí, pravidelně se zálohuje a&nbsp;hlídám jeho dostupnost.
+          O techniku se starám tak, abyste ji vůbec nemuseli řešit.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {benefits.map((b) => (
+          <div class="grain-card flex flex-col gap-2 rounded-2xl border border-line bg-paper p-6 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 reveal">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-mint text-pine-deep">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={b.icon}/></svg>
+            </span>
+            <h3 class="display mt-1 text-lg font-semibold">{b.title}</h3>
+            <p class="text-sm leading-relaxed text-ink-soft">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

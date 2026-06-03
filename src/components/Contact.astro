@@ -1,13 +1,14 @@
 ---
+const email = "jacobworkgreen@gmail.com";
 ---
 
-<section id="contact" class="mx-auto max-w-6xl px-6 py-24">
+<section id="contact" class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
   <div class="grain-card overflow-hidden rounded-3xl border border-line bg-paper">
     <div class="grid lg:grid-cols-2">
-      <!-- left: pitch -->
-      <div class="border-b border-line p-10 lg:border-b-0 lg:border-r lg:p-12">
+      <!-- left: pitch + trust points -->
+      <div class="border-b border-line p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
         <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Pojďme se pobavit</p>
-        <h2 class="display mt-3 text-4xl font-semibold leading-tight tracking-tight">
+        <h2 class="display mt-3 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
           Domluvte si nezávaznou konzultaci zdarma, nebo se jen zeptejte na cenu.
         </h2>
         <p class="mt-5 text-ink-soft">
@@ -17,16 +18,31 @@
         <ul class="mt-8 space-y-3 text-sm">
           {["Ozvu se do jednoho pracovního dne", "Pevná cena dopředu, žádná překvapení", "Údržbu vyřeším za vás"].map((t) => (
             <li class="flex items-center gap-3">
-              <svg class="text-pine-soft" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <svg class="shrink-0 text-pine" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
               {t}
             </li>
           ))}
         </ul>
+        <div class="mt-9 rounded-xl border border-line bg-paper-deep/40 p-4">
+          <p class="text-sm text-ink-soft">
+            Radši napsat rovnou?
+            <a href={`mailto:${email}`} class="font-semibold text-ink underline decoration-pine decoration-2 underline-offset-2 hover:text-pine">{email}</a>
+          </p>
+        </div>
       </div>
 
-      <!-- right: form (posts nowhere yet — wire up later) -->
-      <form class="p-10 lg:p-12" name="consultation" method="POST" data-netlify="false">
+      <!-- right: form (posts to Cloudflare Pages Function /api/contact) -->
+      <form id="contact-form" class="p-8 sm:p-10 lg:p-12" name="consultation" action="/api/contact" method="POST">
         <div class="grid gap-5">
+          <!-- honeypot: skryté pole, lidé ho nevyplní, boti ano -->
+          <input
+            type="text"
+            name="company_website"
+            tabindex="-1"
+            autocomplete="off"
+            class="hidden"
+            aria-hidden="true"
+          />
           <label class="block">
             <span class="text-sm font-semibold">Jméno</span>
             <input name="name" type="text" required placeholder="Vaše jméno"
@@ -51,8 +67,8 @@
               class="mt-1.5 w-full rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-pine">
               <option>Jednoduché stránky</option>
               <option>Kompletní balíček</option>
-              <option>Katalog produktů</option>
-              <option>Hosting / provoz a údržba</option>
+              <option>Katalog / složitější web</option>
+              <option>Hosting, zálohy a měsíční péče</option>
               <option>Zatím nevím, poradíte mi</option>
             </select>
           </label>
@@ -61,13 +77,11 @@
             <span class="text-sm font-semibold">Máte už něco z toho?</span>
             <div class="mt-2 flex flex-col gap-2 text-sm text-ink sm:flex-row sm:gap-6">
               <label class="flex items-center gap-2.5">
-                <input name="has_website" type="checkbox" value="ano"
-                  class="h-4 w-4 rounded border-line text-pine accent-pine" />
+                <input name="has_website" type="checkbox" value="ano" class="h-4 w-4 rounded border-line text-pine accent-pine" />
                 Už mám webové stránky
               </label>
               <label class="flex items-center gap-2.5">
-                <input name="has_domain" type="checkbox" value="ano"
-                  class="h-4 w-4 rounded border-line text-pine accent-pine" />
+                <input name="has_domain" type="checkbox" value="ano" class="h-4 w-4 rounded border-line text-pine accent-pine" />
                 Už mám vlastní adresu (doménu)
               </label>
             </div>
@@ -77,13 +91,11 @@
             <span class="text-sm font-semibold">Jak vás mám nejradši kontaktovat?</span>
             <div class="mt-2 flex gap-6 text-sm text-ink">
               <label class="flex items-center gap-2.5">
-                <input name="contact_method" type="radio" value="telefon" checked
-                  class="h-4 w-4 border-line text-pine accent-pine" />
+                <input name="contact_method" type="radio" value="telefon" checked class="h-4 w-4 border-line text-pine accent-pine" />
                 Telefonicky
               </label>
               <label class="flex items-center gap-2.5">
-                <input name="contact_method" type="radio" value="email"
-                  class="h-4 w-4 border-line text-pine accent-pine" />
+                <input name="contact_method" type="radio" value="email" class="h-4 w-4 border-line text-pine accent-pine" />
                 E-mailem
               </label>
             </div>
@@ -95,19 +107,81 @@
               class="mt-1.5 w-full resize-none rounded-lg border border-line bg-paper-deep/40 px-4 py-3 text-sm text-ink placeholder:text-ink-soft/70 outline-none transition-colors focus:border-pine"></textarea>
           </label>
 
+          <label class="flex items-start gap-2.5 text-sm text-ink-soft">
+            <input name="gdpr" type="checkbox" required class="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-pine accent-pine" />
+            <span>Souhlasím, aby GreenStar použil mé údaje k odpovědi na tuto poptávku. Nikam je nepředávám a&nbsp;neposílám žádný spam.</span>
+          </label>
+
+          <!-- Cloudflare Turnstile (ochrana proti spamu) -->
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADeMpLQt3ngSqxXW"></div>
+
           <button type="submit"
-            class="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-pine">
+            class="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-pine disabled:cursor-not-allowed disabled:opacity-60">
             Odeslat poptávku
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
 
-          <p class="text-center text-sm text-ink-soft">
-            Radši e-mail?
-            <a href="mailto:jacobworkgreen@gmail.com" class="font-semibold text-ink underline decoration-pine decoration-2 underline-offset-2 hover:text-pine">jacobworkgreen@gmail.com</a>
+          <p id="form-note" class="text-center text-xs text-ink-soft">
+            Ozvu se vám do jednoho pracovního dne. Žádný spam.
           </p>
-          <p class="text-center text-xs text-ink-soft">Žádný spam. Vaše údaje použiju jen k tomu, abych vám odpověděl.</p>
         </div>
       </form>
     </div>
   </div>
 </section>
+
+<!-- Turnstile widget loader (third-party, must stay inline) -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const note = document.getElementById("form-note");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Odesílám…";
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: new FormData(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Odeslání selhalo.");
+      }
+
+      form.reset();
+
+      if (note) {
+        note.textContent =
+          data.message || "Děkuji, poptávka byla odeslána. Ozvu se do 1 pracovního dne.";
+        note.classList.remove("text-ink-soft", "text-amber");
+        note.classList.add("text-pine", "font-semibold");
+      }
+    } catch (error) {
+      if (note) {
+        note.textContent =
+          (error as Error).message || "Něco se pokazilo. Napište mi prosím přímo na e-mail.";
+        note.classList.remove("text-ink-soft", "text-pine");
+        note.classList.add("text-amber", "font-semibold");
+      }
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Odeslat poptávku";
+      }
+      // reset Turnstile token so a second submit gets a fresh challenge
+      (window as any).turnstile?.reset?.();
+    }
+  });
+</script>

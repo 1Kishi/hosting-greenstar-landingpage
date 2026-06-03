@@ -1,0 +1,110 @@
+---
+const work = [
+  {
+    tag: "Kadeřnictví · 2026",
+    title: "Salon Vlas & Vlna",
+    meta: "Web s online rezervací, ceníkem služeb a galerií účesů.",
+    span: "md:col-span-7",
+    wide: true,
+    svg: "hair",
+  },
+  {
+    tag: "Kavárna · 2025",
+    title: "Kavárna U Zrníčka",
+    meta: "Denní menu, fotogalerie a mapa hned na první obrazovce.",
+    span: "md:col-span-5",
+    wide: false,
+    svg: "coffee",
+  },
+  {
+    tag: "Osobní trenér · 2025",
+    title: "Coach Marek",
+    meta: "Landing page pro nábor klientů s formulářem na konzultaci.",
+    span: "md:col-span-5",
+    wide: false,
+    svg: "fitness",
+  },
+  {
+    tag: "Truhlářství · 2024",
+    title: "Truhlářství Vorel",
+    meta: "Portfolio realizací a jednoduchý poptávkový formulář.",
+    span: "md:col-span-7",
+    wide: true,
+    svg: "wood",
+  },
+];
+---
+
+<section id="ukazky" class="border-t border-line bg-paper-deep/40">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Ukázky</p>
+        <h2 class="display mt-3 max-w-[18ch] text-4xl font-semibold md:text-5xl reveal">
+          Jak může váš web vypadat
+        </h2>
+      </div>
+      <span class="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft reveal">(06) — Ukázky webů</span>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-12">
+      {work.map((w) => (
+        <a href="#contact" class:list={[
+          "group relative flex items-end overflow-hidden rounded-2xl bg-ink reveal",
+          w.span,
+          w.wide ? "aspect-[16/11]" : "aspect-[4/5]",
+        ]}>
+          <div class="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105">
+            {w.svg === "hair" && (
+              <svg viewBox="0 0 700 480" preserveAspectRatio="xMidYMid slice" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2740"/><stop offset="1" stop-color="#1c1426"/></linearGradient></defs>
+                <rect width="700" height="480" fill="url(#gh)"/>
+                <g stroke="#caa3d6" stroke-width="2.5" fill="none" opacity=".55"><path d="M120 90 q60 120 10 240 q-40 90 30 70"/><path d="M180 80 q70 130 20 250 q-30 80 40 60"/><path d="M240 95 q55 120 5 230 q-35 85 45 65"/></g>
+                <g stroke="#e8c9f0" stroke-width="2" fill="none" opacity=".4"><path d="M520 110 q-55 110 -8 230 q35 80 -40 70"/><path d="M470 100 q-60 120 -12 240 q30 75 -45 65"/></g>
+              </svg>
+            )}
+            {w.svg === "coffee" && (
+              <svg viewBox="0 0 480 600" preserveAspectRatio="xMidYMid slice" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a3b22"/><stop offset="1" stop-color="#2a1a0e"/></linearGradient></defs>
+                <rect width="480" height="600" fill="url(#gc)"/>
+                <g transform="translate(240 300)">
+                  <ellipse cx="0" cy="60" rx="95" ry="22" fill="#3a2614" opacity=".6"/>
+                  <path d="M-80 -40 h160 v40 a80 60 0 0 1 -160 0 z" fill="#d4a574"/>
+                  <path d="M80 -30 q55 10 50 50 q-5 35 -55 30" fill="none" stroke="#d4a574" stroke-width="14"/>
+                  <ellipse cx="0" cy="-40" rx="80" ry="20" fill="#1c1208"/>
+                  <g stroke="#e8d4bc" stroke-width="4" fill="none" opacity=".7" stroke-linecap="round"><path d="M-30 -90 q-12 -22 0 -44"/><path d="M0 -94 q-12 -22 0 -44"/><path d="M30 -90 q-12 -22 0 -44"/></g>
+                </g>
+              </svg>
+            )}
+            {w.svg === "fitness" && (
+              <svg viewBox="0 0 480 600" preserveAspectRatio="xMidYMid slice" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16433a"/><stop offset="1" stop-color="#0a221d"/></linearGradient></defs>
+                <rect width="480" height="600" fill="url(#gf)"/>
+                <g transform="translate(240 300)"><line x1="-150" y1="0" x2="150" y2="0" stroke="#5fd6a8" stroke-width="16" stroke-linecap="round"/><g fill="#5fd6a8"><rect x="-150" y="-45" width="40" height="90" rx="8"/><rect x="-110" y="-30" width="22" height="60" rx="6"/><rect x="110" y="-45" width="40" height="90" rx="8"/><rect x="88" y="-30" width="22" height="60" rx="6"/></g></g>
+                <path d="M60 480 l60 -70 l50 40 l70 -110 l60 80 l60 -50" fill="none" stroke="#5fd6a8" stroke-width="4" opacity=".5"/>
+              </svg>
+            )}
+            {w.svg === "wood" && (
+              <svg viewBox="0 0 700 480" preserveAspectRatio="xMidYMid slice" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a3826"/><stop offset="1" stop-color="#241a10"/></linearGradient></defs>
+                <rect width="700" height="480" fill="url(#gw)"/>
+                <g opacity=".25" stroke="#caa97a" stroke-width="1.5" fill="none"><path d="M0 120 h700"/><path d="M0 220 h700"/><path d="M0 320 h700"/><path d="M0 420 h700"/></g>
+                <g transform="translate(350 240) rotate(-32)"><rect x="-14" y="-130" width="28" height="180" rx="8" fill="#c89b6a"/><path d="M-50 50 h100 l-18 90 h-64 z" fill="#8a8d92"/><rect x="-58" y="44" width="116" height="16" rx="4" fill="#6e7176"/></g>
+              </svg>
+            )}
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[rgba(8,10,6,0.82)] via-transparent to-transparent"></div>
+          <div class="relative z-10 w-full p-6 text-paper md:p-8">
+            <span class="block font-mono text-[11px] uppercase tracking-wider text-paper/70">{w.tag}</span>
+            <h3 class="display mt-2 text-xl font-semibold leading-tight md:text-2xl">{w.title}</h3>
+            <p class="mt-0 max-h-0 overflow-hidden text-sm text-paper/70 opacity-0 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:mt-2 group-hover:max-h-20 group-hover:opacity-100">{w.meta}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center text-sm text-ink-soft reveal">
+      Ukázkové návrhy. Skutečné realizace sem doplním, jakmile budou hotové.
+    </p>
+  </div>
+</section>

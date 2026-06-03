@@ -1,0 +1,53 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Krátce si napíšeme nebo zavoláme",
+    desc: "Řeknete mi co děláte a co má web umět. Bez závazků a bez technických slov.",
+  },
+  {
+    n: "02",
+    title: "Navrhnu řešení a cenu",
+    desc: "Dostanete jasný návrh i pevnou cenu dopředu - žádná překvapení.",
+  },
+  {
+    n: "03",
+    title: "Připravím web",
+    desc: "Texty, strukturu, vzhled, mobilní verzi i doménu. Vy jen schvalujete.",
+  },
+  {
+    n: "04",
+    title: "Spustíme a já se starám dál",
+    desc: "Hosting, zálohy, monitoring, drobné úpravy a technická péče zůstávají na mně.",
+  },
+];
+---
+
+<section id="jak-to-probiha" class="border-t border-line bg-paper-deep/40">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Jak to probíhá</p>
+        <h2 class="display mt-3 max-w-[20ch] text-4xl font-semibold tracking-tight md:text-5xl reveal">
+          Žádná věda. Čtyři klidné kroky.
+        </h2>
+      </div>
+      <span class="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft reveal">(04) - Spolupráce</span>
+    </div>
+
+    <ol class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <li class="grain-card relative flex flex-col rounded-2xl border border-line bg-paper p-6 reveal">
+          <span class="display text-3xl font-light text-pine">{s.n}</span>
+          {i < steps.length - 1 && (
+            <span class="absolute right-5 top-7 hidden text-pine-soft lg:block" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          )}
+          <h3 class="display mt-3 text-lg font-semibold leading-snug">{s.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

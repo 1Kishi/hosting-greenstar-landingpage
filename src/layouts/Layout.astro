@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "GreenStar Hosting - Webové stránky a vše okolo, bez starostí",
-  description = "Vytvořím a postarám se o webové stránky pro malé firmy, živnostníky, tvůrce a místní služby. Vy se staráte o své podnikání, já o vše technické.",
+  title = "GreenStar - web, hosting, zálohy a péče bez technického stresu",
+  description = "Vytvořím vám web a pak se o něj starám. Doména, hosting, zálohy, e-mail i průběžná péče na jednom místě — pro malé firmy, živnostníky a lokální služby. Vy řešíte zákazníky, techniku nechte na mně.",
 } = Astro.props;
 ---
 
@@ -26,6 +26,12 @@ const {
     <meta property="og:type" content="website" />
   </head>
   <body class="min-h-screen antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-paper"
+    >
+      Přeskočit na obsah
+    </a>
     <slot />
   </body>
 </html>

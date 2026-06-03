@@ -1,28 +1,42 @@
 ---
 const audience = [
-  { icon: "M3 21V8l9-5 9 5v13M9 21v-6h6v6", label: "Malé firmy", note: "Abyste působili důvěryhodně a lidé vás našli." },
-  { icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 21v-2a4 4 0 0 0-3-3.87", label: "Živnostníci", note: "Ukázka vaší práce, která získá zákazníky." },
-  { icon: "M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z", label: "Tvůrci", note: "Jedno místo pro všechny vaše odkazy." },
-  { icon: "M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z M12 7v3l2 1", label: "Místní služby", note: "Otevírací doba, objednání a kontakt." },
-  { icon: "M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M11 7a4 4 0 1 0 0 .01M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", label: "Spolky a komunity", note: "Stránky i servery pro vaši skupinu." },
+  { icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 21v-2a4 4 0 0 0-3-3.87", label: "Živnostníci", note: "Web, který získává zákazníky, a klid od techniky." },
+  { icon: "M3 21V8l9-5 9 5v13M9 21v-6h6v6", label: "Malé firmy", note: "Působíte důvěryhodně a lidé vás snadno najdou." },
+  { icon: "M14.7 6.3a4 4 0 0 0-5.6 0L4 11.4a4 4 0 0 0 5.6 5.6l1-1M9.3 17.7a4 4 0 0 0 5.6 0l5.1-5.1a4 4 0 0 0-5.6-5.6l-1 1", label: "Řemeslníci", note: "Portfolio realizací a poptávka na pár kliknutí." },
+  { icon: "M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z M12 7v3l2 1", label: "Salony a lokální služby", note: "Otevírací doba, objednání i ceník přehledně." },
+  { icon: "M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4zM6 1v3M10 1v3M14 1v3", label: "Kavárny a lokální podniky", note: "Menu, fotky a mapa hned na první obrazovce." },
+  { icon: "M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M11 7a4 4 0 1 0 0 .01M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", label: "Menší projekty a komunity", note: "Jednoduché stránky i zázemí pro vaši skupinu." },
 ];
 ---
 
-<section id="who" class="mx-auto max-w-6xl px-6 py-24">
-  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine">Pro koho to je</p>
-  <h2 class="display mt-3 max-w-2xl text-4xl font-semibold tracking-tight md:text-5xl">
-    Pokud se s technikou nechcete trápit, jste tu správně.
-  </h2>
-
-  <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-    {audience.map((a) => (
-      <div class="rounded-xl border border-line bg-paper p-6 transition-colors hover:border-ink">
-        <span class="grid h-11 w-11 place-items-center rounded-lg bg-pine-soft/10 text-pine-soft">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={a.icon}/></svg>
-        </span>
-        <h3 class="mt-4 font-semibold">{a.label}</h3>
-        <p class="mt-1 text-sm text-ink-soft">{a.note}</p>
+<section id="pro-koho" class="border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 md:py-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-pine reveal">Pro koho to je</p>
+        <h2 class="display mt-3 max-w-[20ch] text-4xl font-semibold tracking-tight md:text-5xl reveal">
+          Pokud se s technikou nechcete trápit, jste tu správně.
+        </h2>
       </div>
-    ))}
+      <span class="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft reveal">(01) - Komu pomáhám</span>
+    </div>
+
+    <p class="mt-7 max-w-3xl text-lg leading-relaxed text-ink-soft reveal">
+      Nejčastěji pomáhám <span class="text-ink">řemeslníkům, salonům, kavárnám, trenérům,
+      menším firmám, místním službám a živnostníkům</span> – aby byli vidět online
+		a nemuseli řešit technické starosti.
+    </p>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {audience.map((a) => (
+        <div class="grain-card rounded-2xl border border-line bg-paper p-6 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 hover:border-pine-soft reveal">
+          <span class="grid h-11 w-11 place-items-center rounded-xl bg-mint text-pine-deep">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={a.icon}/></svg>
+          </span>
+          <h3 class="display mt-4 text-xl font-semibold">{a.label}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-soft">{a.note}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
