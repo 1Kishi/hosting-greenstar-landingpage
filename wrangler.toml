@@ -1,0 +1,19 @@
+name = "hosting-greenstar-landingpage"
+compatibility_date = "2026-06-03"
+pages_build_output_dir = "dist"
+
+<<<<<<< HEAD
+main = "src/worker.ts"
+
+[assets]
+directory = "./dist"
+=======
+
+# Cloudflare Pages serves the static Astro build (dist/) and the functions/ directory
+# as Pages Functions. The contact form posts to /api/contact -> functions/api/contact.ts
+>>>>>>> cd5a7f4 (Fix wrangler)
+
+[[d1_databases]]
+binding = "DB"
+database_name = "greenstar-leads"
+database_id = "1c4e9e3c-7110-4523-9651-a721491df660"
