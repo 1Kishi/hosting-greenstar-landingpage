@@ -21,12 +21,15 @@ export default {
           formData.get("has_website") === "on" ||
           formData.get("hasWebsite") === "true";
         const hasDomain =
-          formData.get("has_domain") === "on" ||
-          formData.get("hasDomain") === "true";
-        const gdprConsent =
-          formData.get("gdpr_consent") === "on" ||
-          formData.get("gdprConsent") === "true";
-
+          const checkboxIsChecked = (value: FormDataEntryValue | null) =>
+            value === "on" || value === "true" || value === "ano" || value === "1";
+          
+          const hasWebsite = checkboxIsChecked(formData.get("has_website"));
+          const hasDomain = checkboxIsChecked(formData.get("has_domain"));
+          const gdprConsent = checkboxIsChecked(
+            formData.get("gdpr_consent") || formData.get("gdpr")
+          );
+        
         await env.DB.prepare(`
           INSERT INTO leads (
             name,
