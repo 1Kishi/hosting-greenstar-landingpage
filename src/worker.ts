@@ -2,43 +2,43 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/contact" && request.method === "POST") {
-      try {
-        const formData = await request.formData();
-
-        const name = String(formData.get("name") || "");
-        const email = String(formData.get("email") || "");
-        const phone = String(formData.get("phone") || "");
-        const service = String(formData.get("service") || "");
-        const message = String(formData.get("message") || "");
-
-        await env.DB.prepare(
-          `INSERT INTO leads (name, email, phone, service, message, created_at)
-           VALUES (?, ?, ?, ?, ?, datetime('now'))`
+      await env.DB.prepare(`
+        INSERT INTO leads (
+          name,
+          email,
+          phone,
+          interest,
+          has_website,
+          has_domain,
+          contact_method,
+          message,
+          gdpr_consent,
+          status,
+          source,
+          user_agent,
+          created_at
         )
-          .bind(name, email, phone, service, message)
-          .run();
-
-        return Response.json({
-          ok: true,
-          message: "Saved to D1.",
-        });
-      } catch (error) {
-        console.error("Contact form error:", error);
-
-        return Response.json(
-          {
-            ok: false,
-            error: error instanceof Error ? error.message : "Unknown server error",
-          },
-          { status: 500 }
-        );
-      }
-    }
-
-    return env.ASSETS.fetch(request);
-  },
-};
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+      `)
+        .bind(
+          name,
+          email,
+          phone,
+          interest,
+          hasWebsite ? 1 : 0,
+          hasDomain ? 1 : 0,
+          contactMethod,
+          message,
+          gdprConsent ? 1 : 0,
+          "new",
+          "website",
+          request.headers.get("user-agent") || ""
+        )
+        .run();
+      
+          return env.ASSETS.fetch(request);
+        },
+      };
 
 interface Env {
   ASSETS: Fetcher;
