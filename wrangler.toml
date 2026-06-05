@@ -12,4 +12,4 @@ directory = "./dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "greenstar-leads"
-database_id = "1c4e9e3c-7110-4523-9651-a721491df660"
+database_id = "1c4e9e3c-71be-4523-9651-a721491df660"
